@@ -1,0 +1,78 @@
+query getAllUserDetails{
+  users{
+    _id
+    firstName
+    lastName
+    email
+  }
+}
+
+
+query getAllQuotes{
+  quotes{
+    name
+    by
+  }
+}
+
+
+query getUserById{
+  user(_id:"23131"){
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+
+query getQuoteByUser{
+  iquote(by:"4232"){
+    name
+    by
+  }
+}
+
+
+
+
+mutation SigninUser($userSignin:UserSigninInput){
+  user:signinUser(userSignin:$userSignin){
+    token
+  }
+}
+
+
+query getUserById($userId: ID!){
+  user(_id:$userId){
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+
+
+query getQuoteByUser($quoteby: ID!){
+  iquote(by:$quoteby){
+    name
+    by
+  }
+}
+
+
+mutation createUser($userNew: UserInput!){
+  user:signupUserDummy(userNew: $userNew){
+    _id
+    email
+    firstName
+    lastName
+  }
+}
